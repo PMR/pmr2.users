@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="pmr2.users">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="PMR2 users customization"
+      directory="profiles/default"
+      description="Extra users field for use with PMR2."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+</configure>
