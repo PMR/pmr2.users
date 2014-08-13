@@ -1,8 +1,18 @@
 <configure 
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="pmr2.mapws">
+    i18n_domain="pmr2.users">
 
   <include file="profiles.zcml" />
+  <include package="Products.CMFCore" file="permissions.zcml" />
+
+  <adapter factory="pmr2.users.email.EmailManagerFactory"/>
+
+  <browser:page
+      for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+      name="pmr2_user_email"
+      class=".browser.UserEmailForm"
+      permission="cmf.SetOwnProperties"
+      />
 
 </configure>

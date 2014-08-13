@@ -11,6 +11,10 @@ class EmailManagerTestCase(unittest.TestCase):
     def setUp(self):
         self.email_manager = EmailManager()
 
+    def test_basic(self):
+        self.assertEqual(
+            self.email_manager.get_login_for('testuser@example.com'), None)
+
     def test_add_basic(self):
         self.email_manager.add_email('testuser', 'testuser@example.org')
         self.email_manager.add_email('testuser', 'testuser@example.com')

@@ -2,14 +2,17 @@ from persistent import Persistent
 from persistent.list import PersistentList
 from BTrees.OOBTree import OOBTree
 
+import zope.component
+import zope.interface
 from zope.container.contained import Contained
 from zope.annotation.interfaces import IAttributeAnnotatable
 from zope.annotation import factory
-
 from zope.schema import fieldproperty
-import zope.component
+
+from pmr2.users.interfaces import IEmailManager
 
 
+@zope.interface.implementer(IEmailManager)
 @zope.component.adapter(IAttributeAnnotatable)
 class EmailManager(Persistent, Contained):
     """
