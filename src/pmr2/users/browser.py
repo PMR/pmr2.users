@@ -17,6 +17,7 @@ class IUserEmail(zope.interface.Interface):
         title=u'Your alternative email addresses',
         description=u'Enter alternative email addresses that you own that '
             'you want to be referenced by the commits in the history with.',
+        required=False,
     )
 
 
@@ -62,8 +63,9 @@ class UserEmailForm(form.EditForm):
             return
         changes = self.applyChanges(data)
         if changes:
+            addresses = data['addresses'] or ''
             self.status = self.successMessage
             login, email_manager = self._getLoginAndManager()
-            email_manager.set_email(login, data['addresses'].splitlines())
+            email_manager.set_email(login, addresses.splitlines())
         else:
             self.status = self.noChangesMessage
